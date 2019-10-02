@@ -1,7 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Board from './Board';
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/button-has-type */
+import React from "react";
+import "./App.css";
+import Board from "./Board";
 
 let lineCheck = [];
 class App extends React.Component {
@@ -10,29 +15,30 @@ class App extends React.Component {
     this.state = {
       history: [
         {
-          squares: Array(20).fill(null).map(x => Array(20).fill(null))
+          squares: Array(20)
+            .fill(null)
+            .map(x => Array(20).fill(null))
         }
       ],
       stepNumber: 0,
       xIsNext: true,
       isPlay: true,
       winner: null,
-      position: [{
-        x: 0,
-        y: 0
-      }],
+      position: [
+        {
+          x: 0,
+          y: 0
+        }
+      ],
       selected: false,
-      sort: true,
-      lineCheck: [{
-        x: 0,
-        y: 0
-      }]
+      sort: true
     };
   }
+
   checktrenduoi = (index, ind, player, squares) => {
     let tren = 0;
     let flag = false;
-    const valueplayer = player === 'X' ? 'O' : 'X';
+    const valueplayer = player === "X" ? "O" : "X";
     lineCheck = [{ x: index, y: ind }];
     for (let i = index - 1; i >= 0; i--) {
       if (squares[i][ind] === valueplayer) {
@@ -45,7 +51,6 @@ class App extends React.Component {
         lineCheck.push({ x: i, y: ind });
         tren++;
       }
-
     }
     let duoi = 0;
     let flagg = false;
@@ -60,7 +65,6 @@ class App extends React.Component {
         lineCheck.push({ x: i, y: ind });
         duoi++;
       }
-
     }
     const sum = tren + duoi;
     if (sum === 4 && (!flag || !flagg)) {
@@ -69,12 +73,13 @@ class App extends React.Component {
     if (sum > 4) {
       return true;
     }
+    return false;
+  };
 
-  }
   checktraiphai = (index, ind, player, squares) => {
     let trai = 0;
     let flag = false;
-    const valueplayer = player === 'X' ? 'O' : 'X';
+    const valueplayer = player === "X" ? "O" : "X";
     lineCheck = [{ x: index, y: ind }];
     for (let i = ind - 1; i >= 0; i--) {
       if (squares[index][i] === valueplayer) {
@@ -84,7 +89,7 @@ class App extends React.Component {
         break;
       }
       if (squares[index][i] === player) {
-        lineCheck.push({ x: index, y: i })
+        lineCheck.push({ x: index, y: i });
         trai++;
       }
     }
@@ -98,7 +103,7 @@ class App extends React.Component {
         break;
       }
       if (squares[index][i] === player) {
-        lineCheck.push({ x: index, y: i })
+        lineCheck.push({ x: index, y: i });
         phai++;
       }
     }
@@ -109,13 +114,15 @@ class App extends React.Component {
     if (sum > 4) {
       return true;
     }
-  }
+    return false;
+  };
+
   checkcheotrai = (index, ind, player, squares) => {
     let trai = 0;
     let indexa = index - 1;
     let indb = ind - 1;
     let flag = false;
-    const valueplayer = player === 'X' ? 'O' : 'X';
+    const valueplayer = player === "X" ? "O" : "X";
     lineCheck = [{ x: index, y: ind }];
     while (indexa >= 0 && indb >= 0) {
       if (squares[indexa][indb] === valueplayer) {
@@ -125,7 +132,7 @@ class App extends React.Component {
         break;
       }
       if (squares[indexa][indb] === player) {
-        lineCheck.push({ x: indexa, y: indb })
+        lineCheck.push({ x: indexa, y: indb });
         trai++;
       }
       indexa--;
@@ -143,7 +150,7 @@ class App extends React.Component {
         break;
       }
       if (squares[indexaa][indbb] === player) {
-        lineCheck.push({ x: indexaa, y: indbb })
+        lineCheck.push({ x: indexaa, y: indbb });
         phai++;
       }
       indexaa++;
@@ -156,13 +163,15 @@ class App extends React.Component {
     if (sum > 4) {
       return true;
     }
-  }
+    return false;
+  };
+
   checkcheophai = (index, ind, player, squares) => {
     let trai = 0;
     let indexa = index - 1;
     let indb = ind + 1;
     let flag = false;
-    const valueplayer = player === 'X' ? 'O' : 'X';
+    const valueplayer = player === "X" ? "O" : "X";
     lineCheck = [{ x: index, y: ind }];
     while (indexa >= 0 && indb < 20) {
       if (squares[indexa][indb] === valueplayer) {
@@ -190,7 +199,7 @@ class App extends React.Component {
         break;
       }
       if (squares[indexaa][indbb] === player) {
-        lineCheck.push({ x: indexaa, y: indbb })
+        lineCheck.push({ x: indexaa, y: indbb });
         phai++;
       }
       indexaa++;
@@ -203,55 +212,63 @@ class App extends React.Component {
     if (sum > 4) {
       return true;
     }
-  }
+    return false;
+  };
+
   playagain = () => {
     this.setState({
       history: [
         {
-          squares: Array(20).fill(null).map(x => Array(20).fill(null))
+          squares: Array(20)
+            .fill(null)
+            .map(x => Array(20).fill(null))
         }
       ],
       xIsNext: true,
       isPlay: true,
       winner: null,
       stepNumber: 0,
-      position: [{
-        x: 0,
-        y: 0
-      }],
+      position: [
+        {
+          x: 0,
+          y: 0
+        }
+      ],
       selected: false,
       sort: true
     });
-  }
-  changeColor = () => {
-    lineCheck.forEach((elem, index) => {
-
-    });
   };
+
+  changeColor = () => {
+    lineCheck.forEach((_elem, _index) => {});
+  };
+
   handleclick = (index, ind) => {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
 
     const current = history[history.length - 1];
     const clone = JSON.parse(JSON.stringify(current));
-    let squares = clone.squares.slice();
+    const squares = clone.squares.slice();
     if (this.state.winner) {
       return;
     }
     let winner = null;
     if (!squares[index][ind]) {
-      squares[index][ind] = this.state.xIsNext ? 'X' : 'O';
-      if (this.checktrenduoi(index, ind, squares[index][ind], squares)
-        || this.checktraiphai(index, ind, squares[index][ind], squares)
-        || this.checkcheotrai(index, ind, squares[index][ind], squares)
-        || this.checkcheophai(index, ind, squares[index][ind], squares)) {
+      squares[index][ind] = this.state.xIsNext ? "X" : "O";
+      if (
+        this.checktrenduoi(index, ind, squares[index][ind], squares) ||
+        this.checktraiphai(index, ind, squares[index][ind], squares) ||
+        this.checkcheotrai(index, ind, squares[index][ind], squares) ||
+        this.checkcheophai(index, ind, squares[index][ind], squares)
+      ) {
         winner = squares[index][ind];
         this.changeColor();
       }
-      const position = this.state.position;
+      const { position } = this.state;
       this.setState({
         history: history.concat([
           {
-            squares: squares
+            squares
           }
         ]),
         stepNumber: history.length,
@@ -266,38 +283,42 @@ class App extends React.Component {
       });
     }
   };
-  jumpTo = (step) => {
+
+  jumpTo = step => {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      xIsNext: step % 2 === 0,
       selected: step
     });
-  }
+  };
+
   handleSort = () => {
     this.setState({
       sort: !this.state.sort
-    })
-  }
+    });
+  };
+
   render() {
-    const history = this.state.history;
+    const { history } = this.state;
     const current = history[this.state.stepNumber];
     let moves = history.map((step, move) => {
-      const desc = move ?
-        'Go to move #' + move + `(${this.state.position[move].x}:${this.state.position[move].y})` :
-        'Go to game start';
+      const desc = move
+        ? `Go to move #${move}(${this.state.position[move].x}:${this.state.position[move].y})`
+        : "Go to game start";
       if (move !== this.state.selected) {
         return (
           <li key={move}>
             <button onClick={() => this.jumpTo(move)}>{desc}</button>
           </li>
         );
-      } else {
-        return (
-          <li key={move}>
-            <button onClick={() => this.jumpTo(move)}><b>{desc}</b></button >
-          </li >
-        );
       }
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>
+            <b>{desc}</b>
+          </button>
+        </li>
+      );
     });
     if (!this.state.sort) {
       moves = moves.reverse();
@@ -313,11 +334,13 @@ class App extends React.Component {
             winner={this.state.winner}
             handleclick={(index, ind) => this.handleclick(index, ind)}
             playagain={() => this.playagain()}
-            lineCheck={this.state.winner ? lineCheck : ''}
+            lineCheck={this.state.winner ? lineCheck : ""}
           />
         </div>
         <div className="game-info">
-          <button onClick={this.handleSort}>sort {this.state.sort ? 'descending ' : 'ascending'}</button>
+          <button onClick={this.handleSort}>
+            sort {this.state.sort ? "descending " : "ascending"}
+          </button>
           <ol reversed={!this.state.sort}>{moves}</ol>
         </div>
       </div>
