@@ -1,85 +1,128 @@
-.App {
+#toolbar {
+  background-color:cornflowerblue;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-}
-
-ol, ul {
-  padding-left: 30px;
-}
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.status {
-  margin-bottom: 10px;
-}
-
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
+.board-area{
+  height: 100vh;
+  /* background-color: coral; */
+  display: inline-flex;
   text-align: center;
-  width: 34px;
+  background-image: url("./img/background-board.jpg")
 }
 
-.square:focus {
-  outline: none;
+#blueColor{
+  color: blue !important;
 }
 
-.kbd-navigation .square:focus {
-  background: #ddd;
+#redColor{
+  color: red !important;
 }
 
-.game {
-  display: flex;
-  flex-direction: row;
+.win{
+  background: #FFFF00 !important;
 }
 
-.game-info {
+.square{
+  
+  width: 32px;
+  height: 32px;
+}
+
+.btn-primary{
+  border-color: skyblue !important;
+  background-color: mintcream  !important;
+}
+
+.btn.btn-info{
   margin-left: 20px;
 }
 
+.btn-group>.btn-group:not(:first-child), .btn-group>.btn:not(:first-child) {
+  margin-left: 0px !important;
+  
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.board{
+  text-align: center;
+  margin: 0 auto;
+  display: inline-table;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#disabledbutton {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+}
+.popup_inner {
+  position: absolute;
+  left:30%;
+  right: 30%;
+  top: 30%;
+  bottom: 30%;
+  margin: auto;
+  background: white;
+  text-align: center;
+}
+
+#imgCaro{
+  width: 50%;
+}
+
+#divImgCaro{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.history{
+  background-color: #FFFF00
+}
+
+.list-group-history{
+  max-height: 250px !important;
+  margin-bottom: 10px !important;
+  overflow-y:scroll !important;
+  overflow-x: hidden !important;
+}
+
+ul.kha {
+  transform: rotate(180deg);
+}
+ul.kha > li {
+  transform: rotate(-180deg);
+}
+
+.btn-in-li{
+  width: 100%;
+}
+
+/* login modal area */
+.loginModal{
+  background-image: url('./img/background-login.jpg');
+  background-size: cover;
+}
+.loginForm{
+  margin: 10%;
+}
+
+.imgGoogle, .imgFacebook{
+  height: 35%;
+  width: 35%;
+  /* max-width: 100%;
+  max-height: 100%; */
 }

@@ -1,25 +1,31 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prefer-stateless-function */
 import React from "react";
-import "../App.css";
+import PropTypes from "prop-types";
 
-class Square extends React.Component {
-  render() {
-    let styles = {
-      background: "#fff"
-    };
-    if (this.props.iscolor) {
-      styles = {
-        backgroundColor: "red"
-      };
-    }
-    return (
-      <button className="square" onClick={this.props.click} style={styles}>
-        {this.props.value}
-      </button>
-    );
-  }
-}
+const Square = ({ onClick, id, value }) => {
+  const valueSquare = [
+    ["", "btn-primary"],
+    ["X", "btn-primary"],
+    ["O", "btn-primary"],
+    ["X", "win"],
+    ["O", "win"]
+  ];
+  return (
+    // eslint-disable-next-line react/button-has-type
+    <button
+      onClick={onClick}
+      id={id}
+      className={`square btn btn-sm ${valueSquare[value][1]}`}
+      style={{ color: (value === 1 || value === 3) ? "red" : "blue" }}
+    >
+      {valueSquare[value][0]}
+    </button>
+  );
+};
+
+Square.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired
+};
 
 export default Square;

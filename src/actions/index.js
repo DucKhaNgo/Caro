@@ -1,83 +1,41 @@
-export const addCheck = (squares, type, position) => ({
-    type: 'ADD_CHECK',
-    payload: {
-        squares,
-        type,
-        position
-    }
+import { TURN, IS_PLAYING, HISTORY_SORT } from "./actionType";
+export const toggleSquare = (id, turn) => ({
+  type: "TOGGLE_SQUARE",
+  id,
+  turn
 });
 
-export const changeAllHistory = history => ({
-    type: 'CHANGE_HISTORY',
-    payload: {
-        history
-    }
-});
-export const setIsplay = isplay => ({
-    type: 'is_Play',
-    payload: {
-        isplay
-    }
-});
-export const changeStepNumber = stepNumber => ({
-    type: 'CHANGE_STEPNUMBER',
-    payload: {
-        stepNumber
-    }
+export const changeTurn = () => ({
+  type: TURN.CHANGE
 });
 
-export const addWin = winner => ({
-    type: 'ADD_WINNER',
-    payload: {
-        winner
-    }
+export const changeSortHistory = () => ({
+    type: HISTORY_SORT.CHANGE
+})
+
+export const stopGame = () => ({
+  type: IS_PLAYING.STOP
 });
 
-export const addWasWin = wasWin => ({
-    type: 'ADD_WAS_WIN',
-    payload: {
-        wasWin
-    }
+export const clickRestartGame = () => ({
+  type: IS_PLAYING.START
 });
 
-export const toggleSortMove = () => ({
-    type: 'TOGGLE_MOVE_SORT',
-    payload: {}
-});
+export const draw = (arrDraw, turn) => ({
+  type: "DRAW",
+  arrDraw,
+  turn
+})
 
-export const setSortMoveAsc = () => ({
-    type: 'SET_SORT_MOVE_ASC',
-    payload: {}
-});
+export const toggleHistory = (idHistory) => ({
+  type: "TOGGLE_HISTORY",
+  idHistory,
+})
 
-export const chooseMove = step => ({
-    type: 'CHOOSE_MOVE',
-    payload: {
-        step
-    }
-});
+export const playwithBot = () => ({
+  type: "PLAY_WITH_BOT"
+})
 
-export const toggleXIsNext = () => ({
-    type: 'TOGGLE_XISNEXT',
-    payload: {}
-});
-
-export const setXIsNext = xIsNext => ({
-    type: 'SET_XISNEXT',
-    payload: {
-        xIsNext
-    }
-});
-
-export const Setposition = Position => ({
-    type: 'ADD_POSITION',
-    payload: {
-        position: Position
-    }
-});
-export const setSelected = selected => ({
-    type: 'SET_SELECTED',
-    payload: {
-        selected
-    }
-});
+export const deplaywithBot = () => ({
+  type: "DEPLAY_WITH_BOT"
+})
