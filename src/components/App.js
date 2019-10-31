@@ -17,8 +17,15 @@ import Login from './LoginComponent/Login'
 import Register from './RegisterComponent/Register'
 import Homepage from './HomepageComponent/Homepage'
 import ShowGame from '../containers/ShowGame'
-
+import io from 'socket.io-client';
 const App = props => {
+    const socket = io('http://localhost:5000');
+    socket.on('connect',() => {
+        console.log('connected to server');
+    });
+    socket.on('disconnect', () => {
+        console.log('disconnect from server');
+    });
     const {userInfo, LoginModalOpen, logOut, playwithBot, deplaywithBot} = props
     return (
         <Router>
